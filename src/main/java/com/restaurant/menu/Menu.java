@@ -24,7 +24,7 @@ public class Menu {
 		MenuItem item;
 		// populate Dishes in Item
 		for (int i = 0; i <=100; i++) {
-			item = new MenuItem(i, "Dish ::  " + i);
+			item = new MenuItem(i, "Dish ::  " + (i+1));
 			items[i] = item;
 		}
 
