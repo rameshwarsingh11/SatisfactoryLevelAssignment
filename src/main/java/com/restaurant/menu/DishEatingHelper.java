@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * EateryUtility is a Spring Component Managed Bean and implements KnapSack
+ * DishEatingHelper implements KnapSack
  * Algorithm to find the max satisfaction for a variety of dishes.
  * 
  * KnapSack problem, which restricts the number xi of copies of each
