@@ -99,7 +99,7 @@ public class Customer {
 		FileReader reader = null;
 		int itemCount = 0;
 		try {
-			reader = new FileReader(new File("C:\\Users\\rsin87\\Desktop\\to_madhav\\data.txt"));
+			reader = new FileReader(new File("<PATH TO DATA.TXT>"));
 			br = new BufferedReader(reader);
 			String line;
 			while ((line = br.readLine()) != null) {
