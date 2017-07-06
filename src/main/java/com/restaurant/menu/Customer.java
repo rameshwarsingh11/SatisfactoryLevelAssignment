@@ -2,8 +2,10 @@ package com.restaurant.menu;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -31,6 +33,7 @@ public class Customer {
 		this.customerName = customerName;
 		this.totalTimeToEat = totalTimeToEat * 60;
 		this.menu = menu;
+
 		findtotalItemsToEat();
 	}
 
@@ -38,12 +41,16 @@ public class Customer {
 	 * method to find total items to eat.
 	 * 
 	 * @return 1.
+	 * @throws Exception
 	 */
 	private int findtotalItemsToEat() {
-
-		readDataFromTextFile();
-		printAllSatisfactoryLimit();
-		return 1;
+		DishEatingHelper dishEatingHelper = new DishEatingHelper();
+		File dataFile = new File("..//data.txt");
+		try (InputStream stream = new FileInputStream(dataFile)) {
+			return dishEatingHelper.perform(stream);
+		} catch (IOException e) {
+			throw new InvalidInputFormatException();
+		}
 	}
 
 	private void printAllSatisfactoryLimit() {
@@ -133,11 +140,14 @@ public class Customer {
 	 */
 	private void tokenizeLine(String data, int itemCount) {
 
-		//itemCount = itemCount + 1;
+		// itemCount = itemCount + 1;
 		int timeTakenPerDish = 0;
 		StringTokenizer tokens = new StringTokenizer(data, " ");
 
-		/*menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(tokens.nextToken()));*/
+		/*
+		 * menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(
+		 * tokens.nextToken()));
+		 */
 		if (tokens.hasMoreElements()) {
 			menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(tokens.nextToken()));
 			timeTakenPerDish = Integer.parseInt(tokens.nextToken());
