@@ -47,7 +47,7 @@ public class Customer {
 		DishEatingHelper dishEatingHelper = new DishEatingHelper();
 		File dataFile = new File("..//data.txt");
 		try (InputStream stream = new FileInputStream(dataFile)) {
-			return dishEatingHelper.perform(stream);
+			return dishEatingHelper.readDataFile(stream);
 		} catch (IOException e) {
 			throw new InvalidInputFormatException();
 		}

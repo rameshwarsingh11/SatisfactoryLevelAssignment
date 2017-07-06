@@ -4,25 +4,18 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
 /**
- * DishEatingHelper implements KnapSack
- * Algorithm to find the max satisfaction for a variety of dishes.
+ * DishEatingHelper implements KnapSack Algorithm to find the max satisfaction
+ * for a variety of dishes.
  * 
- * KnapSack problem, which restricts the number xi of copies of each
- * kind of item to zero or one. Given a set of n items numbered from 1 up to n,
- * each with a weight wi and a value vi, along with a maximum weight capacity W
+ * KnapSack problem, which restricts the number xi of copies of each kind of
+ * item to zero or one. Given a set of n items numbered from 1 up to n, each
+ * with a weight wi and a value vi, along with a maximum weight capacity W
  * 
  *
  */
-@Component
 public class DishEatingHelper {
-	private static final Logger logger = LoggerFactory.getLogger(DishEatingHelper.class);
-
-	public Integer perform(InputStream is) {
+	public Integer readDataFile(InputStream is) {
 		// Total allowable time in seconds!
 		Integer t = null;
 		// Total number of Items on Menu
@@ -43,11 +36,19 @@ public class DishEatingHelper {
 		} catch (Throwable e) {
 			throw new InvalidInputFormatException(e);
 		}
-		return perform(t, y, x, n);
+		return doKnapSack(t, y, x, n);
 	}
 
-	// Gordan's best satisfaction/performance on the act of eating
-	public Integer perform(Integer timeLimit, Integer eatingTimes[], Integer degreeOfSatisfactions[],
+	/**
+	 * method to implement KnapSack
+	 * 
+	 * @param timeLimit
+	 * @param eatingTimes
+	 * @param degreeOfSatisfactions
+	 * @param menuItemCount
+	 * @return
+	 */
+	private Integer doKnapSack(Integer timeLimit, Integer eatingTimes[], Integer degreeOfSatisfactions[],
 			Integer menuItemCount) {
 		if (menuItemCount != eatingTimes.length || menuItemCount != degreeOfSatisfactions.length) {
 			throw new InvalidInputFormatException();
