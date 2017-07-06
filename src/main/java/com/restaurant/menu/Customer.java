@@ -133,12 +133,13 @@ public class Customer {
 	 */
 	private void tokenizeLine(String data, int itemCount) {
 
-		itemCount = itemCount + 1;
+		//itemCount = itemCount + 1;
 		int timeTakenPerDish = 0;
 		StringTokenizer tokens = new StringTokenizer(data, " ");
 
-		menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(tokens.nextToken()));
+		/*menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(tokens.nextToken()));*/
 		if (tokens.hasMoreElements()) {
+			menu.getItemList()[itemCount].setSatisfactoryLimit(Integer.parseInt(tokens.nextToken()));
 			timeTakenPerDish = Integer.parseInt(tokens.nextToken());
 			menu.getItemList()[itemCount].setTimeTaken(timeTakenPerDish);
 		}

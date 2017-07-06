@@ -23,7 +23,7 @@ public class Menu {
 	public void populateMenuItems() {
 		MenuItem item;
 		// populate Dishes in Item
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i <=100; i++) {
 			item = new MenuItem(i, "Dish ::  " + i);
 			items[i] = item;
 		}

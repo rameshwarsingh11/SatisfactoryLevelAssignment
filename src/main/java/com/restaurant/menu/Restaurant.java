@@ -37,8 +37,8 @@ public class Restaurant {
 		int time = 0;
 		try {
 			System.out.println("Customer name :: " + "Gordon");
-			System.out.println("Total Time in mins, given to Gordon to eat dishes is ::" + 60 + " mins");
-			time = 60;
+			System.out.println("Total Time in mins, given to Gordon to eat dishes is ::" + 10000 + " mins");
+			time = 10000;
 		} catch (NumberFormatException nfe) {
 			System.err.println("Number not valid." + nfe.getMessage());
 		}
