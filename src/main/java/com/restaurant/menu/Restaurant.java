@@ -22,7 +22,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class Restaurant {
-	private static Menu menu;
 	private static Customer customer;
 
 	/**
@@ -34,11 +33,9 @@ public class Restaurant {
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(Restaurant.class, args);
-		int time = 0;
 		try {
 			System.out.println("Customer name :: " + "Gordon");
 			System.out.println("Total Time in mins, given to Gordon to eat dishes is ::" + 10000 + " mins");
-			time = 10000;
 		} catch (NumberFormatException nfe) {
 			System.err.println("Number not valid." + nfe.getMessage());
 		}
@@ -47,7 +44,14 @@ public class Restaurant {
 		 * catch(ArrayIndexOutOfBoundsException aoe){
 		 * System.err.println("invalid input variables.." + aoe.getMessage()); }
 		 */
-		menu = new Menu();
-		customer = new Customer("Gordon", time, menu);
+		setCustomer(new Customer());
+	}
+
+	public static Customer getCustomer() {
+		return customer;
+	}
+
+	public static void setCustomer(Customer customer) {
+		Restaurant.customer = customer;
 	}
 }
